@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Counter from 'components/Counter';
 
 const App = function() {
-  return <h1>App component</h1>;
+  return (
+    <Fragment>
+      <h1>App component</h1>
+      <Counter />
+    </Fragment>
+  );
 };
 
 export default App;
