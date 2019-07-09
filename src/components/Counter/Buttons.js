@@ -1,13 +1,9 @@
 import React from 'react';
 
 const Buttons = function(props) {
-  const handleClick = event => {
-    console.log('Clicked!');
-  }
-
   return (
     <div>
-      <button onClick={handleClick} >Click Me!</button>
+      <button onClick={props.onClick} >Click Me!</button>
     </div>
   );
 };
