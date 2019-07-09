@@ -11,7 +11,8 @@ Se creó el componente base funcional base (y NODE_PATH=src)
 
 Componente funcional contador
 * Counter + Fragment
-* Counter + botón + Event, pero no hace nada
+* Counter + Values con prop
+* Counter + Values + Buttons con event
 
 Componente basado en clase contador
 
