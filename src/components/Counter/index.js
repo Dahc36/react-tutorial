@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Buttons from './Buttons';
 import Values from './Values';
 
-const Counter = function() {
-  let value = 1;
-
-  const handleClick = _ => {
-    value += 1;
-    console.log(value);
+class Counter extends Component {
+  state = {
+    value: 1,
   }
 
-  return (
-    <div>
-      <h2>Counter</h2>
-      <Values value={value} />
-      <Buttons onClick={handleClick} />
-    </div>
-  );
+  handleClick = _ => {
+    this.setState(state => ({
+      value: state.value + 1,
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Counter</h2>
+        <Values value={this.state.value} />
+        <Buttons onClick={this.handleClick} />
+      </div>
+    );
+  }
 };
 
 export default Counter;

@@ -11,13 +11,12 @@ Se creó el componente base funcional base (y NODE_PATH=src)
 
 Componente funcional contador
 * Counter + Fragment
+Props & Parent-child communication
 * Counter + Values con prop
-* Counter + Values + Buttons con event
+* Counter + Values + Buttons con event (Malo)
+Class based components
+* Counter + Render + imprimir this
+State & Child-parent communication
+* Componente basado en clase contador
 
-Componente basado en clase contador
-
-• Props & Parent-child communication
-• Class based components
-• State & Child-parent communication
 • Lifecycle methods
-• Forms
