@@ -1,8 +1,15 @@
 import React from 'react';
 
+import Values from './Values';
+
 const Counter = function() {
+  let value = 1;
+
   return (
-    <h1>Counter</h1>
+    <div>
+      <h2>Counter</h2>
+      <Values value={value} />
+    </div>
   );
 };
 
