@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import Counter from 'components/Counter';
+import Counter from 'components/Counter/containers/Counter';
 
 const App = function() {
   return (

@@ -1,40 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Buttons from './Buttons';
 import Values from './Values';
 
-class Counter extends Component {
-  state = {
-    value: 1,
-  }
-
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
-
-  handleClick = _ => {
-    this.setState(state => ({
-      value: state.value + 1,
-    }));
-  }
-
-  render() {
-    return (
-      <div>
-        <h2>Counter</h2>
-        <Values value={this.state.value} />
-        <Buttons onClick={this.handleClick} />
-      </div>
-    );
-  }
+const Counter = function(props) {
+  return (
+    <div>
+      <h2>{props.label}</h2>
+      <Values value={props.value} />
+      <Buttons label={props.clickLabel} onClick={props.onClick} />
+    </div>
+  );
 };
 
 export default Counter;
