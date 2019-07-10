@@ -16,10 +16,10 @@ class ContainerCounter extends Component {
   render() {
     return (
       <PresentationCounter
-        value={this.state.value}
-        label="Counter"
         clickLabel="Add one"
+        label="Counter"
         onClick={this.handleClick}
+        value={this.state.value}
       />
     );
   }

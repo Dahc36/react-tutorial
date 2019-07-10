@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 import Counter from 'components/Counter/containers/Counter';
+import Timer from 'components/Counter/containers/Timer';
 
 const App = function() {
   return (
@@ -8,6 +9,7 @@ const App = function() {
       <h1>App component</h1>
       <hr />
       <Counter />
+      <Timer />
     </Fragment>
   );
 };
