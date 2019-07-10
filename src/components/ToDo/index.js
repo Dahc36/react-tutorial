@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
 import ToDoForm from 'components/ToDo/Form';
+import ToDoList from 'components/ToDo/List';
 
 class ToDo extends Component {
   state = {
-    formValue: '',
+    list: [],
   }
 
   handleSubmit = inputValue => {
-    this.setState(_ => ({ formValue: inputValue }));
+    const list = [ ...this.state.list ];
+    list.push(inputValue);
+    this.setState(_ => ({ list }));
   }
 
   render () {
@@ -19,7 +22,7 @@ class ToDo extends Component {
           label="Add"
           onSubmit={this.handleSubmit}
         />
-        <p>{this.state.formValue}</p>
+        <ToDoList list={this.state.list} />
       </div>
     );
   }

@@ -26,6 +26,7 @@ Presentation vs Container
 * Timer
 
 Form
-* Todo Input
-* Componente separado para el input
+* Todo Form
+* Componente separado para el Form
+
 
