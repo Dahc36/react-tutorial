@@ -2,27 +2,40 @@ import React, { Component } from 'react';
 
 class ToDoList extends Component {
   state = {
-    checkList: ,
+    checkList: {},
   }
 
-  handleCheckboxChange = event => {
+  handleCheckboxChange = index => event => {
     const { target } = event;
-    console.log(target.checked);
+    this.setState(state => ({
+      checkList: {
+        ...state.checkList,
+        [index]: target.checked,
+      },
+    }));
   }
 
   renderList = list => {
-    return list.map((item, index) => (
-      <li key={index} style={{ listStyleType: 'none' }} >
-        <input type="checkbox" checked={} onChange={this.handleCheckboxChange} />
-        {item}
-      </li>
-    ));
+    return list.map((item, index) => {
+      const checked = this.state.checkList[index] ? true : false;
+      return (
+        <li key={index} style={{ listStyleType: 'none' }} >
+          <input id={`check-input-${index}`} type="checkbox" checked={checked} onChange={this.handleCheckboxChange(index)} />
+          <label
+            htmlFor={`check-input-${index}`}
+            style={{ textDecorationLine: checked ? 'line-through' : 'none' }}
+          >
+            {item}
+          </label>
+        </li>
+      );
+    });
   }
   
   render() {
     return (
       <ul>
-        {this.renderList(props.list)}
+        {this.renderList(this.props.list)}
       </ul>
     );
   }
