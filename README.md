@@ -25,4 +25,7 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 Presentation vs Container
 * Timer
 
+Form
+* Todo Input
+* Componente separado para el input
 
