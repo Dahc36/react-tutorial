@@ -18,5 +18,6 @@ Class based components
 * Counter + Render + imprimir this
 State & Child-parent communication
 * Componente basado en clase contador
+Lifecycle methods
+* componentDidMount; componentDidUpdate; componentWillUnmount
 
-• Lifecycle methods

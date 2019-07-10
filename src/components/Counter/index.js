@@ -8,6 +8,18 @@ class Counter extends Component {
     value: 1,
   }
 
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+
   handleClick = _ => {
     this.setState(state => ({
       value: state.value + 1,
