@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ToDoList = function(props) {
-  const renderList = function(list) {
-    return list.map((item, index) => (
-      <li key={index} >{item}</li>
-    ));
+class ToDoList extends Component {
+  state = {
+    checkList: ,
   }
 
-  return (
-    <ul>
-      {renderList(props.list)}
-    </ul>
-  );
+  handleCheckboxChange = event => {
+    const { target } = event;
+    console.log(target.checked);
+  }
+
+  renderList = list => {
+    return list.map((item, index) => (
+      <li key={index} style={{ listStyleType: 'none' }} >
+        <input type="checkbox" checked={} onChange={this.handleCheckboxChange} />
+        {item}
+      </li>
+    ));
+  }
+  
+  render() {
+    return (
+      <ul>
+        {this.renderList(props.list)}
+      </ul>
+    );
+  }
 };
 
 export default ToDoList;
