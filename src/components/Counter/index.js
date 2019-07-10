@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Buttons from './Buttons';
-import Values from './Values';
+import CounterButtons from './Buttons';
+import CounterValues from './Values';
 
 const Counter = function(props) {
   return (
@@ -13,8 +13,8 @@ const Counter = function(props) {
       }}
     >
       <h2>{props.label}</h2>
-      <Values value={props.value} />
-      <Buttons label={props.clickLabel} onClick={props.onClick} />
+      <CounterValues value={props.value} />
+      <CounterButtons label={props.clickLabel} onClick={props.onClick} />
     </div>
   );
 };

@@ -20,4 +20,9 @@ State & Child-parent communication
 * Componente basado en clase contador
 Lifecycle methods
 * componentDidMount; componentDidUpdate; componentWillUnmount
+http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+Presentation vs Container
+* Timer
+
 

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 
 import Counter from 'components/Counter/containers/Counter';
 import Timer from 'components/Counter/containers/Timer';
+import ToDo from 'components/ToDo';
 
 const App = function() {
   return (
@@ -10,6 +11,8 @@ const App = function() {
       <hr />
       <Counter />
       <Timer />
+      <hr />
+      <ToDo />
     </Fragment>
   );
 };
