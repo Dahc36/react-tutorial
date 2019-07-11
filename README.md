@@ -1,5 +1,18 @@
-Intro
-* Create-react-app Proyecto creado con https://facebook.github.io/create-react-app/
+# Creación del proyecto
+Este proyecto fue creado usando [Create React App](https://facebook.github.io/create-react-app/docs/getting-started)
+
+El proyecto se dividió en las siguientes etapas o fases:
+1. hello-world: Proyecto base limpio (archivos innecesarios elimnados)
+2. 
+Cada una de estas fases representa un tag del proyecto git, por lo que se puede visitar el código de cada una de la forma:
+```bash
+$ git checkout fase-<número>
+```
+o:
+```bash
+$ git checkout <nombre-fase>
+```
+
 * reactDom
 * JSX
 
