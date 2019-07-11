@@ -23,7 +23,7 @@ class ToDoForm extends Component {
           type="text"
           value={this.state.inputValue}
           onChange={this.handleInputChange} />
-        <button>{this.props.label}</button>
+        <button disabled={this.props.disabled} >{this.props.label}</button>
       </form>
     );
   }

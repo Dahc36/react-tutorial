@@ -28,5 +28,9 @@ Presentation vs Container
 Form
 * Todo Form
 * Componente separado para el Form
+* Component List
+* Checkboxes
 
-
+Ejemplo con axios
+* npm install axios
+* SwapiSearch component
