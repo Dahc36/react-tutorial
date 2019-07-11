@@ -1,22 +1,20 @@
+# Fases
 Este tutorial se divide en las siguientes fases:
-1. **app-component**: Proyecto base limpio con un solo componente funcional
-2. **counter-component**: Componente "Contador"
-3. **timer-component**: Componente "Timer"
-4. **to-do-component**: Componente "To Do"
-5. **swapi-search-component**: Componente "SWAPI Search"
-Cada una de estas fases representa un tag del proyecto git, por lo que se puede visitar el código final de cada una de la forma:
-```bash
-$ git checkout fase-<número>
-```
-o:
-```bash
-$ git checkout <nombre-fase>
-```
+1. [**app-component**](#Fase-1-app-component): Proyecto base limpio con un solo componente funcional
+2. [**counter-component**](#Fase-2-counter-component): Componente "Contador"
+3. [**timer-component**](#Fase-3-timer-component): Componente "Timer"
+4. [**to-do-component**](#Fase-4-to-do-component): Componente "To Do"
+5. [**swapi-search-component**](#Fase-5-swapi-search-component): Componente "SWAPI Search"
+Cada una de estas fases representa un tag del proyecto git, por lo que se puede visitar el código final de cada una de la forma: `$ git checkout fase-<número>` o: `$ git checkout <nombre-fase>`
 
 # Fase 1: app-component
+
+## Pasos
 1. Se creó el proyecto usando [Create React App](https://facebook.github.io/create-react-app/docs/getting-started)
 1. Se eliminó el código innecesario, dejando solo el archivo `index.js` que utiliza el método `ReactDOM.render` para montar la aplizazión React a `<div id="root">` y un componente funcional `App.js` en `src/`
 1. Se creó el archivo `.env` para hacer `imports` absolutos
+
+## Código
 **Terminal**
 ```bash
 $ npx create-react-app react-tutorial
@@ -31,8 +29,8 @@ import ReactDOM from 'react-dom';
 import App from 'App';
 
 ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
+    <App/>,
+    document.getElementById('root')
 );
 ```
 **src/App.js**
@@ -40,7 +38,7 @@ ReactDOM.render(
 import React from 'react';
 
 const App = function() {
-  return <h1>App component</h1>;
+    return <h1>App component</h1>;
 };
 
 export default App;
@@ -52,18 +50,21 @@ NODE_PATH=src
 
 # Fase 2: counter-component
 ## Crear componente `Counter` base
+### Pasos
 1. Se creó la carpeta `components` en `src/`
 1. Se creó la carpeta `Counter` en `src/components`
 1. Se creó el archivo `index.js` en `src/components/Counter`
 1. Se importó el nuevo componente a `src/App.js` y se agregó el componente `Fragment` para agregar más tags HTML sin necesidad de crear otro `<div>`
+
+### Código
 **src/components/Counter/index.js**
 ```jsx
 import React from 'react';
 
 const Counter = function() {
-  return (
-    <h1>Counter</h1>
-  );
+    return (
+        <h1>Counter</h1>
+    );
 };
 
 export default Counter;
@@ -74,32 +75,35 @@ import React, { Fragment } from 'react';
 import Counter from 'components/Counter';
 
 const App = function() {
-  return (
-    <Fragment>
-      <h1>App component</h1>
-      <hr/>
-      <Counter />
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <h1>App component</h1>
+            <hr/>
+            <Counter />
+        </Fragment>
+    );
 };
 
 export default App;
 ```
 
 ## Crear componente `Values` y comunicar valor a través de `prop`
+### Pasos
 1. Se creó archivo `Values.js` en `src/components/Counter`
 1. Se importó el nuevo archivo a `Counter.js`
 1. Se pasó el valor `value` como una prop al componente `Values`
+
+### Código
 **src/components/Counter/Values.js**
 ```jsx
 import React from 'react';
 
 const Values = function(props) {
-  return (
-    <div>
-      <p>Value: {props.value}</p>
-    </div>
-  );
+    return (
+        <div>
+            <p>Value: {props.value}</p>
+        </div>
+    );
 };
 
 export default Values;
@@ -111,37 +115,40 @@ import React from 'react';
 import Values from './Values';
 
 const Counter = function() {
-  let value = 1;
+    let value = 1;
 
-  return (
-    <div>
-      <h2>Counter</h2>
-      <Values value={value} />
-    </div>
-  );
+    return (
+        <div>
+            <h2>Counter</h2>
+            <Values value={value} />
+        </div>
+    );
 };
 
 export default Counter;
 ```
 
 ## Crear componente `Buttons` con comportamiento para evento `onClick`
-1. Se creó archivo `Buttons.js` en `src/components/Counter`
+### Pasos
+1. Se creó el archivo `Buttons.js` en `src/components/Counter`
 1. Se importó el nuevo archivo a `Counter.js`
 1. Se creó un botón con comportamiento para el evento `onClick`
+
+### Código
 **src/components/Counter/Buttons.js**
 ```jsx
 import React from 'react';
 
 const Buttons = function(props) {
-  const handleClick = event => {
-    console.log('Clicked!');
-  }
+    const handleClick = event => {
+        console.log('Clicked!');
+    }
 
-  return (
-    <div>
-      <button onClick={handleClick} >Click Me!</button>
-    </div>
-  );
+    return (
+        <div>
+            <button onClick={handleClick} >Click Me!</button>
+        </div>
+    );
 };
 
 export default Buttons;
@@ -154,35 +161,38 @@ import Buttons from './Buttons';
 import Values from './Values';
 
 const Counter = function() {
-  let value = 1;
+    let value = 1;
 
-  return (
-    <div>
-      <h2>Counter</h2>
-      <Values value={value} />
-      <Buttons />
-    </div>
-  );
+    return (
+        <div>
+            <h2>Counter</h2>
+            <Values value={value} />
+            <Buttons />
+        </div>
+    );
 };
 
 export default Counter;
 ```
 
 ## Transformar componente `Counter` a componente basado en clase y entregar comportamiento para `onClick` por `prop`
+### Pasos
 1. Se modificó el componente `Buttons` para recibir el comportamiento para `onClick` por `prop`
 1. Se modificó el componente `Counter` para ser basado en clase y poder manejar estado
 1. Se modificó el comportamiento para `onClick`, para que modifique el estado usando el método `setState`
 1. Se agregaron ejemplos de algunos métodos `lifecycle` de todo componente basado en clase al componente `Counter` ([ver diagrama](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/))
+
+### Código
 **src/components/Counter/Buttons.js**
 ```jsx
 import React from 'react';
 
 const Buttons = function(props) {
-  return (
-    <div>
-      <button onClick={props.onClick} >Click Me!</button>
-    </div>
-  );
+    return (
+        <div>
+            <button onClick={props.onClick} >Click Me!</button>
+        </div>
+    );
 };
 
 export default Buttons;
@@ -195,43 +205,46 @@ import Buttons from './Buttons';
 import Values from './Values';
 
 class Counter extends Component {
-  state = {
-    value: 1,
-  }
+    state = {
+        value: 1,
+    }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
+    componentDidUpdate() {
+        console.log('componentDidUpdate');
+    }
 
-  handleClick = _ => {
-    this.setState(state => ({
-      value: state.value + 1,
-    }));
-  }
+    handleClick = _ => {
+        this.setState(state => ({
+            value: state.value + 1,
+        }));
+    }
 
-  render() {
-    return (
-      <div>
-        <h2>Counter</h2>
-        <Values value={this.state.value} />
-        <Buttons onClick={this.handleClick} />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <h2>Counter</h2>
+                <Values value={this.state.value} />
+                <Buttons onClick={this.handleClick} />
+            </div>
+        );
+    }
 };
 
 export default Counter;
 ```
 
 ## Separar componente `Counter` en componentes contenedor y presentacional
+### Pasos
 1. Se creó a carpeta `containers` en `src/components/Counter`
 1. Se creó el archivo `Counter.js` en `src/components/Counter/containers`
 1. Se modificó el componente `Counter` para adaptarse a las recomendaciones del artículo [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 1. Se modificó la ruta para importar el componente `Counter` en `src/App.js`
+
+### Código
 **src/components/Counter/index.js**
 ```jsx
 import React from 'react';
@@ -240,13 +253,13 @@ import Buttons from './Buttons';
 import Values from './Values';
 
 const Counter = function(props) {
-  return (
-    <div>
-      <h2>{props.label}</h2>
-      <Values value={props.value} />
-      <Buttons label={props.clickLabel} onClick={props.onClick} />
-    </div>
-  );
+    return (
+        <div>
+            <h2>{props.label}</h2>
+            <Values value={props.value} />
+            <Buttons label={props.clickLabel} onClick={props.onClick} />
+        </div>
+    );
 };
 
 export default Counter;
@@ -258,26 +271,26 @@ import React, { Component } from 'react';
 import PresentationCounter from 'components/Counter';
 
 class ContainerCounter extends Component {
-  state = {
-    value: 1,
-  }
+    state = {
+        value: 1,
+    }
 
-  handleClick = _ => {
-    this.setState(state => ({
-      value: state.value + 1,
-    }));
-  }
+    handleClick = _ => {
+        this.setState(state => ({
+            value: state.value + 1,
+        }));
+    }
 
-  render() {
-    return (
-      <PresentationCounter
-        value={this.state.value}
-        label="Counter"
-        clickLabel="Add one"
-        onClick={this.handleClick}
-      />
-    );
-  }
+    render() {
+        return (
+            <PresentationCounter
+                value={this.state.value}
+                label="Counter"
+                clickLabel="Add one"
+                onClick={this.handleClick}
+            />
+        );
+    }
 };
 
 export default ContainerCounter;
@@ -289,22 +302,25 @@ import React, { Fragment } from 'react';
 import Counter from 'components/Counter/containers/Counter';
 
 const App = function() {
-  return (
-    <Fragment>
-      <h1>App component</h1>
-      <hr/>
-      <Counter />
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <h1>App component</h1>
+            <hr/>
+            <Counter />
+        </Fragment>
+    );
 };
 
 export default App;
 ```
 
 # Fase 3: timer-component
+## Pasos
 1. Se creó un nuevo componente contenedor `Timer` en `src/components/Counter/containers`, utilizando el componente presentacional del `Counter`
 1. Se modificó el componente presentacional para mejorar la apariencia de ambos componentes contenedores
 1. Se importó el nuevo componente a `src/App.js`
+
+## Código
 **src/components/Counter/containers/Timer.js**
 ```jsx
 import React, { Component } from 'react';
@@ -312,42 +328,42 @@ import React, { Component } from 'react';
 import PresentationCounter from 'components/Counter';
 
 class ContainerTimer extends Component {
-  state = {
-    timeout: null,
-    timerStarted: false,
-    value: 0,
-  }
-
-  handleClick = _ => {
-    if (this.state.timerStarted) {
-      clearInterval(this.state.timeout);
-      this.setState(_ => ({
+    state = {
         timeout: null,
         timerStarted: false,
-      }));
-    } else {
-      const timeout = setInterval(_ => {
-        this.setState(state => ({
-          value: state.value + 0.1,
-        }));
-      }, 100);
-      this.setState(_ => ({
-        timeout,
-        timerStarted: true,
-      }));
+        value: 0,
     }
-  }
 
-  render() {
-    return (
-      <PresentationCounter
-        clickLabel={this.state.timerStarted ? 'STOP' : 'START'}
-        label="Timer"
-        onClick={this.handleClick}
-        value={Math.round(this.state.value * 10) / 10}
-      />
-    );
-  }
+    handleClick = _ => {
+        if (this.state.timerStarted) {
+            clearInterval(this.state.timeout);
+            this.setState(_ => ({
+                timeout: null,
+                timerStarted: false,
+            }));
+        } else {
+            const timeout = setInterval(_ => {
+                this.setState(state => ({
+                    value: state.value + 0.1,
+                }));
+            }, 100);
+            this.setState(_ => ({
+                timeout,
+                timerStarted: true,
+            }));
+        }
+    }
+
+    render() {
+        return (
+            <PresentationCounter
+                clickLabel={this.state.timerStarted ? 'STOP' : 'START'}
+                label="Timer"
+                onClick={this.handleClick}
+                value={Math.round(this.state.value * 10) / 10}
+            />
+        );
+    }
 };
 
 export default ContainerTimer;
@@ -360,19 +376,19 @@ import Buttons from './Buttons';
 import Values from './Values';
 
 const Counter = function(props) {
-  return (
-    <div
-      style={{
-        display: 'inline-block',
-        textAlign: 'center',
-        width: '50%',
-      }}
-    >
-      <h2>{props.label}</h2>
-      <Values value={props.value} />
-      <Buttons label={props.clickLabel} onClick={props.onClick} />
-    </div>
-  );
+    return (
+        <div
+            style={{
+                display: 'inline-block',
+                textAlign: 'center',
+                width: '50%',
+            }}
+        >
+            <h2>{props.label}</h2>
+            <Values value={props.value} />
+            <Buttons label={props.clickLabel} onClick={props.onClick} />
+        </div>
+    );
 };
 
 export default Counter;
@@ -385,14 +401,14 @@ import Counter from 'components/Counter/containers/Counter';
 import Timer from 'components/Counter/containers/Timer';
 
 const App = function() {
-  return (
-    <Fragment>
-      <h1>App component</h1>
-      <hr />
-      <Counter />
-      <Timer />
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <h1>App component</h1>
+            <hr />
+            <Counter />
+            <Timer />
+        </Fragment>
+    );
 };
 
 export default App;
@@ -400,44 +416,47 @@ export default App;
 
 # Fase 4: to-do-component
 ## Crear formulario y sus comportamientos
+### Pasos
 1. Se creó la carpeta `ToDo` en `src/components`
 1. Se creo el archivo `index.js` en `src/components/ToDo`
 1. Se importó el nuevo componente a `src/App.js`
+
+### Código
 **src/components/ToDo/index.js**
 ```jsx
 import React, { Component } from 'react';
 
 class ToDo extends Component {
-  state = {
-    inputValue: 'ejemplo',
-    formValue: '',
-  }
+    state = {
+        inputValue: 'ejemplo',
+        formValue: '',
+    }
 
-  handleInputChange = event => {
-    const { target } = event;
-    this.setState(_ => ({ inputValue: target.value }));
-  }
+    handleInputChange = event => {
+        const { target } = event;
+        this.setState(_ => ({ inputValue: target.value }));
+    }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState(_ => ({ formValue: this.state.inputValue }));
-  }
+    handleSubmit = event => {
+        event.preventDefault();
+        this.setState(_ => ({ formValue: this.state.inputValue }));
+    }
 
-  render () {
-    return (
-      <div>
-        <h2>To Do</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.state.inputValue}
-            onChange={this.handleInputChange} />
-          <button>Add</button>
-        </form>
-        <p>{this.state.formValue}</p>
-      </div>
-    );
-  }
+    render () {
+        return (
+            <div>
+                <h2>To Do</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type="text"
+                        value={this.state.inputValue}
+                        onChange={this.handleInputChange} />
+                    <button>Add</button>
+                </form>
+                <p>{this.state.formValue}</p>
+            </div>
+        );
+    }
 };
 
 export default ToDo;
@@ -451,55 +470,58 @@ import Timer from 'components/Counter/containers/Timer';
 import ToDo from 'components/ToDo';
 
 const App = function() {
-  return (
-    <Fragment>
-      <h1>App component</h1>
-      <hr/>
-      <Counter />
-      <Timer />
-      <hr/>
-      <ToDo />
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <h1>App component</h1>
+            <hr/>
+            <Counter />
+            <Timer />
+            <hr/>
+            <ToDo />
+        </Fragment>
+    );
 };
 
 export default App;
 ```
 
 ## Encapsular formulario en componente
+### Pasos
 1. Se creó el archivo `Form.js` en `src/components/ToDo` para aislar el manejo de input y form
 1. Se modificó el comportamiento del componente `ToDo` para utilizar el nuevo componente `Form`
+
+### Código
 **src/components/ToDo/Form.js**
 ```jsx
 import React, { Component } from 'react';
 
 class ToDoForm extends Component {
-  state = {
-    inputValue: '',
-  }
+    state = {
+        inputValue: '',
+    }
 
-  handleInputChange = event => {
-    const { target } = event;
-    this.setState(_ => ({ inputValue: target.value }));
-  }
+    handleInputChange = event => {
+        const { target } = event;
+        this.setState(_ => ({ inputValue: target.value }));
+    }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props.onSubmit(this.state.inputValue);
-    this.setState(_ => ({ inputValue: '' }));
-  }
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.onSubmit(this.state.inputValue);
+        this.setState(_ => ({ inputValue: '' }));
+    }
 
-  render () {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={this.state.inputValue}
-          onChange={this.handleInputChange} />
-        <button>{this.props.label}</button>
-      </form>
-    );
-  }
+    render () {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    value={this.state.inputValue}
+                    onChange={this.handleInputChange} />
+                <button>{this.props.label}</button>
+            </form>
+        );
+    }
 };
 
 export default ToDoForm;
@@ -511,50 +533,53 @@ import React, { Component } from 'react';
 import ToDoForm from 'components/ToDo/Form';
 
 class ToDo extends Component {
-  state = {
-    formValue: '',
-  }
+    state = {
+        formValue: '',
+    }
 
-  handleSubmit = inputValue => {
-    this.setState(_ => ({ formValue: inputValue }));
-  }
+    handleSubmit = inputValue => {
+        this.setState(_ => ({ formValue: inputValue }));
+    }
 
-  render () {
-    return (
-      <div>
-        <h2>To Do</h2>
-        <ToDoForm
-          label="Add"
-          onSubmit={this.handleSubmit}
-        />
-        <p>{this.state.formValue}</p>
-      </div>
-    );
-  }
+    render () {
+        return (
+            <div>
+                <h2>To Do</h2>
+                <ToDoForm
+                    label="Add"
+                    onSubmit={this.handleSubmit}
+                />
+                <p>{this.state.formValue}</p>
+            </div>
+        );
+    }
 };
 
 export default ToDo;
 ```
 
 ## Crear componente para mostrar lista
+### Pasos
 1. Se creó el archivo `List.js` en `src/components/ToDo`
 1. Se importó el nuevo componente al componente `ToDo`
+
+### Código
 **src/components/ToDo/List.js**
 ```jsx
 import React from 'react';
 
 const ToDoList = function(props) {
-  const renderList = function(list) {
-    return list.map((item, index) => (
-      <li key={index} >{item}</li>
-    ));
-  }
+    const renderList = function(list) {
+        return list.map((item, index) => (
+            <li key={index} >{item}</li>
+        ));
+    }
 
-  return (
-    <ul>
-      {renderList(props.list)}
-    </ul>
-  );
+    return (
+        <ul>
+            {renderList(props.list)}
+        </ul>
+    );
 };
 
 export default ToDoList;
@@ -567,90 +592,96 @@ import ToDoForm from 'components/ToDo/Form';
 import ToDoList from 'components/ToDo/List';
 
 class ToDo extends Component {
-  state = {
-    list: [],
-  }
+    state = {
+        list: [],
+    }
 
-  handleSubmit = inputValue => {
-    const list = [ ...this.state.list ];
-    list.push(inputValue);
-    this.setState(_ => ({ list }));
-  }
+    handleSubmit = inputValue => {
+        const list = [ ...this.state.list ];
+        list.push(inputValue);
+        this.setState(_ => ({ list }));
+    }
 
-  render () {
-    return (
-      <div>
-        <h2>To Do</h2>
-        <ToDoForm
-          label="Add"
-          onSubmit={this.handleSubmit}
-        />
-        <ToDoList list={this.state.list} />
-      </div>
-    );
-  }
+    render () {
+        return (
+            <div>
+                <h2>To Do</h2>
+                <ToDoForm
+                    label="Add"
+                    onSubmit={this.handleSubmit}
+                />
+                <ToDoList list={this.state.list} />
+            </div>
+        );
+    }
 };
 
 export default ToDo;
 ```
 
 ## Agregar checkboxes a componente `List`
+### Pasos
 1. Se modificó el componente `List` para poder manejar el estado de `checked` de cada item
+
+### Código
 **src/components/ToDo/List.js**
 ```jsx
 import React, { Component } from 'react';
 
 class ToDoList extends Component {
-  state = {
-    checkList: {},
-  }
+    state = {
+        checkList: {},
+    }
 
-  handleCheckboxChange = index => event => {
-    const { target } = event;
-    this.setState(state => ({
-      checkList: {
-        ...state.checkList,
-        [index]: target.checked,
-      },
-    }));
-  }
+    handleCheckboxChange = index => event => {
+        const { target } = event;
+        this.setState(state => ({
+            checkList: {
+                ...state.checkList,
+                [index]: target.checked,
+            },
+        }));
+    }
 
-  renderList = list => {
-    return list.map((item, index) => {
-      const checked = this.state.checkList[index] ? true : false;
-      return (
-        <li key={index} style={{ listStyleType: 'none' }} >
-          <input id={`check-input-${index}`} type="checkbox" checked={checked} onChange={this.handleCheckboxChange(index)} />
-          <label
-            htmlFor={`check-input-${index}`}
-            style={{ textDecorationLine: checked ? 'line-through' : 'none' }}
-          >
-            {item}
-          </label>
-        </li>
-      );
-    });
-  }
-  
-  render() {
-    return (
-      <ul>
-        {this.renderList(this.props.list)}
-      </ul>
-    );
-  }
+    renderList = list => {
+        return list.map((item, index) => {
+            const checked = this.state.checkList[index] ? true : false;
+            return (
+                <li key={index} style={{ listStyleType: 'none' }} >
+                    <input id={`check-input-${index}`} type="checkbox" checked={checked} onChange={this.handleCheckboxChange(index)} />
+                    <label
+                        htmlFor={`check-input-${index}`}
+                        style={{ textDecorationLine: checked ? 'line-through' : 'none' }}
+                    >
+                        {item}
+                    </label>
+                </li>
+            );
+        });
+    }
+    
+    render() {
+        return (
+            <ul>
+                {this.renderList(this.props.list)}
+            </ul>
+        );
+    }
 };
 
 export default ToDoList;
 ```
 
 # Fase 5: swapi-search-component
+## Pasos
 1. Se intaló axios en el proyecto
 1. Se creó la carpeta `SwapiSearch` en `src/components`
 1. Se creó el archivo `index.js` en `src/components/SwapiSearch`
 1. Se reutilizaron los componentes `ToDo/Form` y `ToDo/List` para crear un formulario de búsqueda y los resultados
 1. Se agregó un `prop` `disabled` al componente `ToDo/Form`, para el momento de carga de datos
 1. Se importó el nuevo componente a `src/App.js`
+
+## Código
 **Terminal**
 ```bash
 $ npm install axios
@@ -664,62 +695,62 @@ import SearchForm from 'components/ToDo/Form';
 import SearchList from 'components/ToDo/List';
 
 class SwapiSearch extends Component {
-  state = {
-    list: [],
-    searchValue: 'none',
-  }
-
-  getAllData = async function(searchParam) {
-    const characterArray = [];
-    let url = `https://swapi.co/api/people/?search=${searchParam}`;
-    let response = await axios.get(url);
-    let data = response.data;
-    data.results.forEach(result => characterArray.push(result.name));
-    while (data.next) {
-      url = data.next;
-      response = await axios.get(url);
-      data = response.data;
-      data.results.forEach(result => characterArray.push(result.name));
+    state = {
+        list: [],
+        searchValue: 'none',
     }
-    return characterArray;
-  }
 
-  handleSubmit = searchParam => {
-    this.setState(_ => ({
-      list: [],
-      loading: true,
-      searchValue: searchParam,
-    }));
-    this.getAllData(searchParam)
-      .then(response => this.setState(_ => ({
-        list: response,
-        loading: false,
-      })))
-      .catch(error => console.log(error));
-  }
+    getAllData = async function(searchParam) {
+        const characterArray = [];
+        let url = `https://swapi.co/api/people/?search=${searchParam}`;
+        let response = await axios.get(url);
+        let data = response.data;
+        data.results.forEach(result => characterArray.push(result.name));
+        while (data.next) {
+            url = data.next;
+            response = await axios.get(url);
+            data = response.data;
+            data.results.forEach(result => characterArray.push(result.name));
+        }
+        return characterArray;
+    }
 
-  render() {
-    const {
-      list,
-      loading,
-      searchValue,
-    } = this.state;
+    handleSubmit = searchParam => {
+        this.setState(_ => ({
+            list: [],
+            loading: true,
+            searchValue: searchParam,
+        }));
+        this.getAllData(searchParam)
+            .then(response => this.setState(_ => ({
+                list: response,
+                loading: false,
+            })))
+            .catch(error => console.log(error));
+    }
 
-    return (
-      <div>
-        <h2>Swapi Search</h2>
-        <SearchForm
-          disabled={loading}
-          label="Search"
-          onSubmit={this.handleSubmit}
-        />
-        <p>Search value: {searchValue}</p>
-        <SearchList
-          list={list}
-        />
-      </div>
-    );
-  }
+    render() {
+        const {
+            list,
+            loading,
+            searchValue,
+        } = this.state;
+
+        return (
+            <div>
+                <h2>Swapi Search</h2>
+                <SearchForm
+                    disabled={loading}
+                    label="Search"
+                    onSubmit={this.handleSubmit}
+                />
+                <p>Search value: {searchValue}</p>
+                <SearchList
+                    list={list}
+                />
+            </div>
+        );
+    }
 };
 
 export default SwapiSearch;
@@ -729,32 +760,32 @@ export default SwapiSearch;
 import React, { Component } from 'react';
 
 class ToDoForm extends Component {
-  state = {
-    inputValue: '',
-  }
+    state = {
+        inputValue: '',
+    }
 
-  handleInputChange = event => {
-    const { target } = event;
-    this.setState(_ => ({ inputValue: target.value }));
-  }
+    handleInputChange = event => {
+        const { target } = event;
+        this.setState(_ => ({ inputValue: target.value }));
+    }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props.onSubmit(this.state.inputValue);
-    this.setState(_ => ({ inputValue: '' }));
-  }
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.onSubmit(this.state.inputValue);
+        this.setState(_ => ({ inputValue: '' }));
+    }
 
-  render () {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={this.state.inputValue}
-          onChange={this.handleInputChange} />
-        <button disabled={this.props.disabled} >{this.props.label}</button>
-      </form>
-    );
-  }
+    render () {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    value={this.state.inputValue}
+                    onChange={this.handleInputChange} />
+                <button disabled={this.props.disabled} >{this.props.label}</button>
+            </form>
+        );
+    }
 };
 
 export default ToDoForm;
@@ -769,20 +800,19 @@ import Timer from 'components/Counter/containers/Timer';
 import ToDo from 'components/ToDo';
 
 const App = function() {
-  return (
-    <Fragment>
-      <h1>App component</h1>
-      <hr/>
-      <Counter />
-      <Timer />
-      <hr/>
-      <ToDo />
-      <hr/>
-      <SwapiSearch/>
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <h1>App component</h1>
+            <hr/>
+            <Counter />
+            <Timer />
+            <hr/>
+            <ToDo />
+            <hr/>
+            <SwapiSearch/>
+        </Fragment>
+    );
 };
 
 export default App;
-
 ```
