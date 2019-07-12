@@ -1,11 +1,16 @@
+> **Advertencia**: este tutorial se desarrolló usando [React v16.8](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html), pero utiliza [*class components*](https://reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class) para manejar el estado de los componentes y por lo tanto no utiliza [*Hooks*](https://reactjs.org/docs/hooks-intro.html)
+
 # Fases
-Este tutorial se divide en las siguientes fases:
-1. [**app-component**](#Fase-1-app-component): Proyecto base limpio con un solo componente funcional
-2. [**counter-component**](#Fase-2-counter-component): Componente "Contador"
-3. [**timer-component**](#Fase-3-timer-component): Componente "Timer"
-4. [**to-do-component**](#Fase-4-to-do-component): Componente "To Do"
-5. [**swapi-search-component**](#Fase-5-swapi-search-component): Componente "SWAPI Search"
-Cada una de estas fases representa un tag del proyecto git, por lo que se puede visitar el código final de cada una de la forma: `$ git checkout fase-<número>` o: `$ git checkout <nombre-fase>`
+Este tutorial se divide en fases, para crear la aplicación [**React tutorial**](https://dahc36.github.io/react-tutorial/). Cada fase va creando cada uno de los componentes que forman la aplicación.
+
+Las Fases son:
+1. [**app-component**](#Fase-1-app-component): Proyecto base limpio con un solo componente funcional (que no hace nada)
+2. [**counter-component**](#Fase-2-counter-component): Componente "Contador", que mantiene un valor (0 inicialmente) y le va sumando 1.
+3. [**timer-component**](#Fase-3-timer-component): Componente "Timer", que mantiene un valor (0 inicialmente) y va aumentando su valor en 0.1 cada décima de segundo, mientras se encuentre iniciado.
+4. [**to-do-component**](#Fase-4-to-do-component): Componente "To Do", que puede agregar palabras o frases a una lista de cosas por hacer y modificar su estado de realizadas.
+5. [**swapi-search-component**](#Fase-5-swapi-search-component): Componente "SWAPI Search", que permite buscar personajes de la saga Star Wars con palabras clave (utilizando [SWAPI](https://swapi.co/)).
+
+Cada una de estas fases representa un tag del proyecto git, por lo que se puede visitar el código final de cada fase usando: `$ git checkout fase-<número>` o: `$ git checkout <nombre-fase>`
 
 # Fase 1: app-component
 
@@ -674,7 +679,7 @@ export default ToDoList;
 
 # Fase 5: swapi-search-component
 ## Pasos
-1. Se intaló axios en el proyecto
+1. Se intaló [axios](https://github.com/axios/axios) en el proyecto
 1. Se creó la carpeta `SwapiSearch` en `src/components`
 1. Se creó el archivo `index.js` en `src/components/SwapiSearch`
 1. Se reutilizaron los componentes `ToDo/Form` y `ToDo/List` para crear un formulario de búsqueda y los resultados
@@ -816,3 +821,14 @@ const App = function() {
 
 export default App;
 ```
+
+# Siguientes pasos
+Luego de comprender los conceptos de este tutorial, se recomienda:
+1. **Aprender [React Router](https://reacttraining.com/react-router/web/guides/quick-start)**: Es la opción más popular para implementar navegación en React.
+1. **Aprender [Redux](https://redux.js.org/)**: Librería para manejar estado, facilita la comunicación entre distintos componentes y la persistencia de estado. Es importante entender que **el uso de Redux no es obligatorio** y [**en muchos casos no es necesario**](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367). Pero tomando decisiones correctas sobre cuándo utilizarla, puede ser una herramienta muy útil en una aplicación React.
+1. **Desarrollar algo**: Es la mejor forma incorporar estos conocimientos y adquirir nuevos.
+
+# Links de utilidad
+* [Documentación oficial de React](https://reactjs.org/docs/getting-started.html)
+* [Blog oficial de React](https://reactjs.org/blog/)
+* [Documentación de Create React App](https://facebook.github.io/create-react-app/docs/getting-started)
